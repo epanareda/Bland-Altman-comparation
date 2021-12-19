@@ -433,36 +433,148 @@ const T_TABLE_CI = {
   }
 }
 
-document.getElementById("execute_btn").addEventListener("click", main);
+function main(){
+  document.getElementById("execute_btn").addEventListener("click", compare);
+  document.getElementById("clean_btn").addEventListener("click", clean_form);
+  document.getElementById("back_btn").addEventListener("click", back);
+}
+
+function set_results(la, bias, ci_bias, la_values, ci_la_top, ci_la_bottom, len, diff_sd, indep, repeat, normal, cl_la, cl_ci){
+  var cont = document.getElementById("result_cont");
+
+  if((la_values[0]-la_values[1]) >= Number(la)){
+    var big_small = "menor";
+    var final_result = "FAVORABLE";
+  }else{
+    var big_small = "major";
+    var final_result = "DESFAVORABLE";
+  }
+
+  if(indep == "NO"){
+    var repeat_text = `<li>Grau de dependència (repetició per mostres): ${repeat}</li>`;
+  }else{
+    var repeat_text = ""
+  }
+
+  if(normal == "NO"){
+    var log_text = `<li>S'ha aplicat una transformació logarítmica a les dades.</li>`;
+  }else{
+    var log_text = ""
+  }
+
+  var html_code = `
+  <p>
+    El resultat comparatiu entre els dos mètodes presenta una amplitud en els límits de cooncordança ${big_small} al valor marcat de ${la}.
+    </br>
+    Per tant el resultat de la comparació és <strong>${final_result}</strong>.
+  </p>
+
+  <p>
+    Els paràmetres utilitzats per aquest anàlisi comparatiu són els següents:
+  </p>
+  <ul>
+    <li>Número de registres: ${len}</li>
+    <li>Independència entre dades: ${indep}</li>
+    ${repeat_text}
+    <li>Distribució normal: ${normal}</li>
+    ${log_text}
+    <li>Nivell de confiança per als límits de concordança: ${cl_la}</li>
+    <li>Nivell de confiança per als intervals de confiança del bias i els límits de concordança: ${cl_ci}</li>
+  </ul>
+
+  <p>
+    Els resultats obtinguts de la comparació són els següents:
+  </p>
+  <ul>
+    <li>Variància: ${Math.round(Math.pow(diff_sd, 2)*100)/100}</li>
+    <li>Desviació estàndard: ${Math.round(diff_sd*100)/100}</li>
+    <li>Bias: ${Math.round(bias*100)/100}</li>
+    <li>Intervals de confiança del bias: ${Math.round(ci_bias[0]*100)/100}, ${Math.round(ci_bias[1]*100)/100}</li>
+    <li>Límits de concordança: ${Math.round(la_values[0]*100)/100}, ${Math.round(la_values[1]*100)/100}</li>
+    <li>Intervals de confiança del límit de concordança major: ${Math.round(ci_la_top[0]*100)/100}, ${Math.round(ci_la_top[1]*100)/100}</li>
+    <li>Intervals de confiança del límit de concordança menor: ${Math.round(ci_la_bottom[0]*100)/100}, ${Math.round(ci_la_bottom[1]*100)/100}</li>
+  </ul>
+  </br>
+
+  <div id="graph_cont">
+    <div id="title_graph"><h3>Gràfica Bland-Altman</h3></div>
+    <div id="y_label"><p class="vertical">valors mètode A - mètode B</p></div>
+    <div id="graph">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div id="x_label"><p>mitjana entre valors mètode A i B</p></div>
+    <div id="legend">
+      <div id="bias_color"></div>
+      <div id="bias_text"><p>bias</p></div>
+      <div id="bias_ic_color"></div>
+      <div id="bias_ic_text"><p>intervals de confiança (bias)</p></div>
+      <div id="la_color"></div>
+      <div id="la_text"><p>límits de concordança</p></div>
+      <div id="la_ic_color"></div>
+      <div id="la_ic_text"><p>intervals de confiança (límits de concordança)</p></div>
+    </div>
+  </div>
+
+  </br>
+
+  <p>
+    Aquesta comparació s'ha realitzat via una <a href="https://epanareda.github.io/Bland-Altman-comparation/">aplicació web</a> dissenyada per Ernest Panareda Roig (2021), estudiant del Màster universitari de Ciència de Dades a la Universitat Oberta de Catalunya (UOC).
+  </p>
+
+  </br>
+  `;
+
+  document.getElementById("nav_bar").innerHTML = "";
+  cont.innerHTML = html_code;
+  document.getElementById("back_btn").style.visibility = "visible";
+}
+
+function back(){
+  window.location.href = "app.html";
+}
 
 function read_form(){
-  var la = document.getElementById("LA").value;
+  var la = document.getElementById("LA");
   var cl_la = document.getElementById("CL-LA").value;
   var indep = document.getElementById("indep").value;
-  var repeat = document.getElementById("repeat").value;
+  var repeat = document.getElementById("repeat");
   var normal = document.getElementById("normal").value;
-  var cl_ci_la = document.getElementById("CL-CI-LA").value;
+  var cl_ci = document.getElementById("CL-CI-LA").value;
   var csv = document.getElementById("csv").files[0];
 
   var alert_text = "Falta algun camp per omplir o hi ha algun camp incorrecte.";
 
   if (la.value == "" && !isNaN(la.value)) {
-      window.alert(alert_text);
-      la.focus();
-      return false;
+    window.alert(alert_text);
+    la.focus();
+    return false;
   }
 
-  if (indep.value == "NO" && repeat.value == "" && !isNaN(repeat.value)) {
-      window.alert(alert_text);
-      repeat.focus();
-      return false;
+  if (indep == "NO" && repeat.value == "" && !isNaN(repeat.value)) {
+    window.alert(alert_text);
+    repeat.focus();
+    return false;
   }
 
-  return [la, cl_la, indep, repeat, normal, cl_ci_la, csv];
+  return [la.value, cl_la, indep, repeat.value, normal, cl_ci, csv];
 }
 
-function main() {
-  [la, cl_la, indep, repeat, normal, cl_ci_la, csv] = read_form();
+function clean_form(){
+  document.getElementById("LA").value = "";
+  document.getElementById("CL-LA").value = "50%";
+  document.getElementById("indep").value = "SI";
+  document.getElementById("repeat").value = "";
+  document.getElementById("normal").value = "SI";
+  document.getElementById("CL-CI-LA").value = "50%";
+  document.getElementById("csv").value = "";
+}
+
+function remove_form(){
+  document.getElementById("form_cont").innerHTML = "";
+}
+
+function compare() {
+  var [la, cl_la, indep, repeat, normal, cl_ci, csv] = read_form();
   
   var reader = new FileReader();
 
@@ -470,8 +582,10 @@ function main() {
     const csv_data = e.target.result;
     var [arr_A, arr_B, mean_arr, diff_arr] = data_transformation(csv_data, normal);
     var [bias, ci_bias, la_values, ci_la_top, ci_la_bottom, len, diff_sd] =
-      Bland_Altman(arr_A, arr_B, diff_arr, cl_la, cl_ci_la, indep, repeat);
+      Bland_Altman(arr_A, arr_B, diff_arr, cl_la, cl_ci, indep, repeat);
     //window.alert([diff_arr]);
+    remove_form();
+    set_results(la, bias, ci_bias, la_values, ci_la_top, ci_la_bottom, len, diff_sd, indep, repeat, normal, cl_la, cl_ci);
     graficar(mean_arr, diff_arr, bias, ci_bias, la_values, ci_la_top, ci_la_bottom);
   };
 
@@ -861,5 +975,7 @@ function graficar(mean_arr, diff_arr, bias, ci_bias, la_values, ci_la_top, ci_la
     };
 
   var ctx = document.getElementById('myChart');
-  var myChart = new Chart(ctx, config);
+  new Chart(ctx, config);
 }
+
+main();

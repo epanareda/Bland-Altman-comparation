@@ -1,0 +1,104 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#nav_bar{
+    display: grid;
+    width: 50%;
+    grid-template-columns: auto auto auto;
+}
+
+#graph_cont{
+    margin: 20px;
+    display:grid;
+    grid-template-columns: 40px 600px auto;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+  }
+#title_graph{
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+}
+#y_label{
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 13px;
+}
+#graph{
+    grid-column: 2;
+    grid-row: 2;
+}
+#x_label{
+    grid-column: 2;
+    grid-row: 3;
+    font-size: 13px;
+    align-items: flex-end;
+    justify-self: center;
+}
+#legend{
+    grid-column: 3;
+    grid-row: 2;
+
+    display: grid;
+    grid-template-columns: auto 20px auto auto;
+    grid-template-rows: auto auto auto auto;
+    column-gap: 5px;
+    width: 250px;
+    align-items: center;
+    border: 1px solid rgb(180,180,180, 0.5);
+    font-size: 12px;
+}
+
+#bias_color{
+    grid-column: 2;
+    grid-row: 1;
+    background-color: rgb(255, 99, 132);
+    height: 15%;
+}
+
+#bias_text{
+    grid-column: 4;
+    grid-row: 1;
+}
+
+#bias_ic_color{
+    grid-column: 2;
+    grid-row: 2;
+    background-color: rgb(255, 99, 132, 0.3);
+    height: 15%;
+}
+
+#bias_ic_text{
+    grid-column: 4;
+    grid-row: 2;
+}
+
+#la_color{
+    grid-column: 2;
+    grid-row: 3;
+    background-color: rgb(99, 132, 255);
+    height: 15%;
+}
+
+#la_text{
+    grid-column: 4;
+    grid-row: 3;
+}
+
+#la_ic_color{
+    grid-column: 2;
+    grid-row: 4;
+    background-color: rgb(99, 132, 255, 0.3);
+    height: 11%;
+}
+
+#la_ic_text{
+    grid-column: 4;
+    grid-row: 4;
+}
+
+.vertical{
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
