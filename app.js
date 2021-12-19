@@ -433,18 +433,18 @@ const T_TABLE_CI = {
   }
 }
 
-function main() {
-  var la = document.forms["RegForm"]["LA"];
-  var cl_la = document.forms["RegForm"]["CL-LA"];
-  var indep = document.forms["RegForm"]["indep"];
-  var repeat = document.forms["RegForm"]["repeat"];
-  var normal = document.forms["RegForm"]["normal"];
-  //var log = document.forms["RegForm"]["log"];
-  var cl_ci_la = document.forms["RegForm"]["CL-CI-LA"];
-  //var cl_ci_bias = document.forms["RegForm"]["CL-CI-bias"]
-  var csv = document.forms["RegForm"]["csv"]
+document.getElementById("execute_btn").addEventListener("click", main);
 
-  var alert_text = "Falta algun camp per omplir o  hi ha algun camp incorrecte.";
+function read_form(){
+  var la = document.getElementById("LA").value;
+  var cl_la = document.getElementById("CL-LA").value;
+  var indep = document.getElementById("indep").value;
+  var repeat = document.getElementById("repeat").value;
+  var normal = document.getElementById("normal").value;
+  var cl_ci_la = document.getElementById("CL-CI-LA").value;
+  var csv = document.getElementById("csv").files[0];
+
+  var alert_text = "Falta algun camp per omplir o hi ha algun camp incorrecte.";
 
   if (la.value == "" && !isNaN(la.value)) {
       window.alert(alert_text);
@@ -458,19 +458,24 @@ function main() {
       return false;
   }
 
-  var input = csv.files[0];
+  return [la, cl_la, indep, repeat, normal, cl_ci_la, csv];
+}
+
+function main() {
+  [la, cl_la, indep, repeat, normal, cl_ci_la, csv] = read_form();
+  
   var reader = new FileReader();
 
   reader.onload = function (e) {
     const csv_data = e.target.result;
-    var [arr_A, arr_B, mean_arr, diff_arr] = data_transformation(csv_data, normal.value);
+    var [arr_A, arr_B, mean_arr, diff_arr] = data_transformation(csv_data, normal);
     var [bias, ci_bias, la_values, ci_la_top, ci_la_bottom, len, diff_sd] =
-      Bland_Altman(arr_A, arr_B, diff_arr, cl_la.value, cl_ci_la.value, indep.value, repeat.value)
+      Bland_Altman(arr_A, arr_B, diff_arr, cl_la, cl_ci_la, indep, repeat);
     //window.alert([diff_arr]);
     graficar(mean_arr, diff_arr, bias, ci_bias, la_values, ci_la_top, ci_la_bottom);
   };
 
-  reader.readAsText(input);
+  reader.readAsText(csv);
 
   return true;
 }

@@ -9,101 +9,103 @@
 
     <body>
         <h1>COMPARACIÓ DE MÈTODES AMB BLAND-ALTMAN</h1>
-
-        <form name="RegForm" action="/submit.php" onsubmit="return main()" method="post">
-            <p>Límit de concordança marcat: <input type="number" size="65" name="LA" /></p>
-            <br />
-
-            <p>Nivell de confiança per als límits de concordança:
-                <select type="text" value="" name="CL-LA">
-                    <option>50%</option>
-                    <option>60%</option>
-                    <option>70%</option>
-                    <option>80%</option>
-                    <option>90%</option>
-                    <option>95%</option>
-                    <option>98%</option>
-                    <option>99%</option>
-                    <option>99.8%</option>
-                    <option>99.9%</option>
-                </select>
-            </p>
-            <br />
-
-            <p>
-                Les mostres són independents?
-                <select type="text" value="" name="indep">
-                    <option>SI</option>
-                    <option>NO</option>
-                </select>
-            </p>
-            <br />
-
-            <p>Grau de repetició de mostres: <input type="number" size="65" name="repeat" placeholder="Omple només en cas negatiu de la pregunta anterior."/></p>
-            <br />
-
-            <p>
-                Les dades presenten una distribució normal?
-                <select type="text" value="" name="normal">
-                    <option>SI</option>
-                    <option>NO</option>
-                </select>
-            </p>
-            <p>
-                <i><small>*En cas negatiu s'aplicarà una transformació logarítmica.</small></i>
-            </p>
-            <br />
-
-            <!--<p>
-                Cal aplicar una transformació logarítmica per la seva representació?
-                <select type="text" value="" name="log">
-                    <option>SI</option>
-                    <option>NO</option>
-                </select>
-            </p>
-            <br />-->
-
-            <p>Nivell de confiança per als intervals de confiança del bias i els límits de concordança:
-                <select type="text" value="" name="CL-CI-LA">
-                    <option>50%</option>
-                    <option>60%</option>
-                    <option>70%</option>
-                    <option>80%</option>
-                    <option>90%</option>
-                    <option>95%</option>
-                    <option>98%</option>
-                    <option>99%</option>
-                    <option>99.8%</option>
-                    <option>99.9%</option>
-                </select>
-            </p>
-            <br />
-
-            <!--<p>Intervals de confiança per al <i>bias</i>:
-                <select type="text" value="" name="CL-CI-bias">
-                    <option>50%</option>
-                    <option>60%</option>
-                    <option>70%</option>
-                    <option>80%</option>
-                    <option>90%</option>
-                    <option>95%</option>
-                    <option>98%</option>
-                    <option>99%</option>
-                    <option>99.8%</option>
-                    <option>99.9%</option>
-                </select>
-            </p>
-            <br />-->
-
-            <p>Arxiu <i>csv</i> amb les dades: <input type="file" name="csv" /></p>
-            <br />
-
-            <br />
-
-            <input type="submit" value="Executa" name="Submit" />
-            <input type="reset" value="Reinicia" name="Reset" />
-            </p>
-        </form>
+        <div id="form_cont">
+            <form name="form" action="">
+                <p>Límit de concordança marcat: <input id="LA" type="number" size="65" name="LA" /></p>
+                <br />
+    
+                <p>Nivell de confiança per als límits de concordança:
+                    <select id="CL-LA" type="text" name="CL-LA">
+                        <option>50%</option>
+                        <option>60%</option>
+                        <option>70%</option>
+                        <option>80%</option>
+                        <option>90%</option>
+                        <option>95%</option>
+                        <option>98%</option>
+                        <option>99%</option>
+                        <option>99.8%</option>
+                        <option>99.9%</option>
+                    </select>
+                </p>
+                <br />
+    
+                <p>
+                    Les mostres són independents?
+                    <select id="indep" type="text" name="indep">
+                        <option>SI</option>
+                        <option>NO</option>
+                    </select>
+                </p>
+                <br />
+    
+                <p>Grau de repetició de mostres:
+                    <input id="repeat" type="number" size="65" name="repeat"
+                        placeholder="Omple només en cas negatiu de la pregunta anterior."/>
+                </p>
+                <br />
+    
+                <p>
+                    Les dades presenten una distribució normal?
+                    <select id="normal" type="text" name="normal">
+                        <option>SI</option>
+                        <option>NO</option>
+                    </select>
+                </p>
+                <p>
+                    <i><small>*En cas negatiu s'aplicarà una transformació logarítmica.</small></i>
+                </p>
+                <br />
+    
+                <!--<p>
+                    Cal aplicar una transformació logarítmica per la seva representació?
+                    <select type="text" value="" name="log">
+                        <option>SI</option>
+                        <option>NO</option>
+                    </select>
+                </p>
+                <br />-->
+    
+                <p>Nivell de confiança per als intervals de confiança del bias i els límits de concordança:
+                    <select id="CL-CI-LA" type="text" name="CL-CI-LA">
+                        <option>50%</option>
+                        <option>60%</option>
+                        <option>70%</option>
+                        <option>80%</option>
+                        <option>90%</option>
+                        <option>95%</option>
+                        <option>98%</option>
+                        <option>99%</option>
+                        <option>99.8%</option>
+                        <option>99.9%</option>
+                    </select>
+                </p>
+                <br />
+    
+                <!--<p>Intervals de confiança per al <i>bias</i>:
+                    <select type="text" value="" name="CL-CI-bias">
+                        <option>50%</option>
+                        <option>60%</option>
+                        <option>70%</option>
+                        <option>80%</option>
+                        <option>90%</option>
+                        <option>95%</option>
+                        <option>98%</option>
+                        <option>99%</option>
+                        <option>99.8%</option>
+                        <option>99.9%</option>
+                    </select>
+                </p>
+                <br />-->
+    
+                <p>Arxiu <i>csv</i> amb les dades: <input id="csv" type="file" name="csv" /></p>
+                <br />
+            </form>
+    
+            <button id="execute_btn">Executa</button>
+            <button id="clean_btn">Borra</button>
+        </div>
+        
 
         <div style="width: 500px;">
             <canvas id="myChart" width="400" height="400"></canvas>
