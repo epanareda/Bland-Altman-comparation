@@ -16,7 +16,72 @@
         </br>
 
         <p>
-            
+            Arrel de la pandèmia viscuda des del 2020 amb el COVID, l’ús de productes mèdics (o medical devices en anglès) ha augmentat radicalment per diagnosticar si una persona està contagiada per aquesta malaltia. Aquests productes mèdics no són més que un mètode per mesurar l’indicador del pacient que permet conèixer el seu estat.
+        </p>
+        <p>
+            Perquè aquests mètodes es puguin utilitzar amb certesa han d’estar aprovats. I la manera més comuna per aprovar un producte mèdic com a vàlid, consisteix en comparar-ne els seus resultats amb els resultats d’un mètode ja aprovat que funcioni. Per això, es realitzen mesures amb ambdós mètodes a diferents individus, en el mateix moment, i un cop amb totes les dades, es comparen.
+        </p>
+        <p>
+            Actualment, aquest procés de comparació no conta amb cap estàndard, és a dir, no hi ha cap guia a seguir per a realitzar l’estudi, així com tampoc n’hi ha cap per avaluar-lo. Tot i això, tant els estudia com les avaluacions s’han anat realitzant, justificant per a cada cas les decisions preses, però no hi ha hagut mai la necessitat d’unificar la manera de com fer-ho.
+        </p>
+        <p>
+            Aquesta no estandardització en els processos de comparació, suposen una problemàtica important a l’hora de validar un nou mètode amb certesa.
+        </p>
+        <p>
+            L’ús del mètode comparatiu definit per Bland-Altman és el que més s’ha utilitzat en diferència per realitzar comparacions d’aquest tipus. Tot i això, estudis paral·lels sobre aquestes comparacions realitzades, han demostrat que l’ús de Bland-Altman en la majoria de casos no ha estat ben adaptada. La teoria de Bland-Altman engloba diferents possibilitats en quant a la naturalesa de les dades, i segons el cas en que s’hagi de treballar, permet adaptar-ne la comparació per obtenir un resultat el més acurat possible.
+        </p>
+        <p>
+            Així mateix, Bland-Altman no dona un resultat amb el que per si sol es pugui determinar si la comparació és favorable o desfavorable, sinó que s’obté un rang de valors, una amplitud, que en base als coneixements sobre el camp que s’estigui comparant, es pot obtenir un veredicte, però és necessari la intervenció de professionals per obtenir aquest veredicte.
+        </p>
+        <p>
+            És per això, que el treball que s’ha realitzat i es mostra en aquesta web, no és únicament una aplicació que, donades unes dades de mesures utilitzant dos mètodes diferents, retorna el resultat d’aplicar-hi una comparació amb Bland-Altman, sinó que és la conclusió d’un treball previ de recerca sobre com es poden obtenir unes conclusions estàndard, aplicables per a diferents situacions, utilitzant Bland-Altman. Estudiant diferents propostes ja realitzades per altres autors sobre possibles estàndards en aquest procés de comparació, i definint una proposta clara sobre quins d’aquests estàndards s’han considerat (jo personalment) per a realitzar una comparació entre 2 mètodes utilitzant Bland-Altman.
+        </p>
+        <p>
+            Així doncs, la proposta d’estàndards que es presenten en aquesta web consten dels següents punts:
+        </p>
+        <ol>
+            <li>
+                Establir en primera instància l’acceptació dels límits de concordança, previ a la comparació.
+            </li>
+            <li>
+                Descriure l’estructura de les dades (mostres independents, rèpliques, varies mostres per un mateix individu...)
+            </li>
+            <li>
+                Definir el grau de repetició en les mostres, el nombre de mostres per pacient.
+            </li>
+            <li>
+                Graficar les dades i explorar per absència de tendència i variància constant.
+            </li>
+            <li>
+                Si és necessari, aplicar transformacions sobre les dades (logarítmica, per exemple) per considerar canvis en la variància en la diferència (diferència entre valors de les mostres dels dos mètodes).
+            </li>
+            <li>
+                Calcular i representar la mitjana de la diferència o bias.
+            </li>
+            <li>
+                Donar una estimació de la precisió del bias (intervals de confiança).
+            </li>
+            <li>
+                Calcular i indicar els límits de concordança (o limits of agreement en anglès) de la diferència.
+            </li>
+            <li>
+                Donar una estimació  de la precisió dels límits de concordança (intervals de confiança).
+            </li>
+            <li>
+                Indicar el nombre de mostres, per avaluar si és suficient.
+            </li>
+            <li>
+                Presentar la variància entre mostres, amb la idea de justificar que els intervals de confiança calculats sobre els límits de concordança han tingut en compte l’estructura de les dades.
+            </li>
+            <li>
+                El software utilitzat per realitzar els càlculs de l’anàlisi.
+            </li>
+            <li>
+                Les suposicions estadístiques realitzades, com la normalitat de les dades.
+            </li>
+        </ol>
+        <p>
+            En l’aplicació que es presenta en aquesta web, es disposa d’un formulari inicial, on es poden indicar els paràmetres desitjats per a realitzar la comparació amb Bland-Altman, així com el fitxer amb les dades a comparar, i en executar l’aplicació retorna per pantalla els diferents elements proposta d’estàndard, llistats anteriorment, a excepció del punt 4. Aquest punt s’ha considerat massa dens per simplificar-se en la comparació, i es deixa a mans de l’usuari per realitzar i interpretar de forma independent.
         </p>
     </body>
 </html>
