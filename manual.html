@@ -6,11 +6,11 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>COMPARACIÓ ENTRE MÈTODES AMB BLAND-ALTMAN</h1>
+        <h1>COMPARACIÓ ENTRE IN-VITRO DEVICES (IVD) AMB BLAND-ALTMAN</h1>
         </br>
         <nav id="nav_bar">
             <h2><a href="index.html">HOME</a></h2>
-            <h2><a href="manual.html" style="font-size: 30px;">MANUAL</a></h2>
+            <h2><a href="manual.html" style="font-size: 23px;">MANUAL</a></h2>
             <h2><a href="app.html">APLICACIÓ</a></h2>
         </nav>
         </br>
@@ -22,31 +22,51 @@
             Els paràmetres que s’han de definir prèviament són els següents:
         </p>
         <ol>
-            <li>
-                <a href="#1" style="color: inherit; text-decoration: inherit;">Límit de concordança marcat</a>
+            <li class="list_manual">Límit de concordança marcat 
+                <a href="#1" style="color: inherit; text-decoration: inherit;">
+                    <img class="img_link" src="img/link-arrow.png" alt="arrow_link">
+                </a>
             </li>
-            <li>
-                <a href="#2" style="color: inherit; text-decoration: inherit;">Nivell de confiança per als límits de concordança</a>
+            <li class="list_manual">Nivell de confiança per als límits de concordança
+                <a href="#2" style="color: inherit; text-decoration: inherit;">
+                    <img class="img_link" src="img/link-arrow.png" alt="arrow_link">
+                </a>
             </li>
-            <li>
-                <a href="#3" style="color: inherit; text-decoration: inherit;">Les mostres són independents?</a>
+            <li class="list_manual">Les mostres són independents?
+                <a href="#3" style="color: inherit; text-decoration: inherit;">
+                    <img class="img_link" src="img/link-arrow.png" alt="arrow_link">
+                </a>
             </li>
-            <li>
-                <a href="#4" style="color: inherit; text-decoration: inherit;">Grau de repetició de mostres</a>
+            <li class="list_manual">Grau de repetició de mostres
+                <a href="#4" style="color: inherit; text-decoration: inherit;">
+                    <img class="img_link" src="img/link-arrow.png" alt="arrow_link">
+                </a>
             </li>
-            <li>
-                <a href="#5" style="color: inherit; text-decoration: inherit;">Les dades presenten una distribució normal?</a>
+            <li class="list_manual">Les dades presenten una distribució normal?
+                <a href="#5" style="color: inherit; text-decoration: inherit;">
+                    <img class="img_link" src="img/link-arrow.png" alt="arrow_link">
+                </a>
             </li>
-            <li>
-                <a href="#6" style="color: inherit; text-decoration: inherit;">Nivell de confiança per als intervals de confiança del bias i els límits de concordança</a>
+            <li class="list_manual">Nivell de confiança per als intervals de confiança del bias i els límits de concordança
+                <a href="#6" style="color: inherit; text-decoration: inherit;">
+                    <img class="img_link" src="img/link-arrow.png" alt="arrow_link">
+                </a>
             </li>
-            <li>
-                <a href="#7" style="color: inherit; text-decoration: inherit;">Arxiu csv amb les dades</a>
+            <li class="list_manual">Arxiu csv amb les dades
+                <a href="#7" style="color: inherit; text-decoration: inherit;">
+                    <img class="img_link" src="img/link-arrow.png" alt="arrow_link">
+                </a>
+            </li>
+            <li class="list_manual">Exemple il·lustrat
+                <a href="#8" style="color: inherit; text-decoration: inherit;">
+                    <img class="img_link" src="img/link-arrow.png" alt="arrow_link">
+                </a>
             </li>
         </ol>
         <p>
             I només quan aquests paràmetres estan ben definits, es pot executar el procés de comparació.
         </p>
+
         <h4 id="1">
             1. LÍMIT DE CONCORDANÇA MARCAT
         </h4>
@@ -59,6 +79,7 @@
         <p>
             Tanmateix, si no es disposa d’aquest valor en el moment de realitzar la comparació, es pot introduir qualsevol valor numèric, i la comparació s’executarà igualment, retornant tots els resultats d’aquesta. Ara bé, indicarà que el resultat és desfavorable.
         </p>
+
         <h4 id="2">
             2. NIVELL DE CONFIANÇA PER ALS LÍMITS DE CONCORDANÇA
         </h4>
@@ -71,13 +92,15 @@
         <p>
             Tot i que el més habitual és prendre el 95% de confiança, es dona l’opció de prendre els següents: 50%, 60%, 70%, 80%, 90%, 95%, 98%, 99%, 99.8% i 99.9%.
         </p>
-        <img src="img/limits_confidence.png" alt="" style="width: 360px;">
+        <img class="img_manual" src="img/limits_confidence.png" alt="" style="width: 360px;">
+
         <h4 id="3">
             3. LES MOSTRES SÓN INDEPENDENTS?
         </h4>
         <p>
             Per poder introduir aquest paràmetre, és necessari conèixer la naturalesa de les dades. Ja que la fórmula a aplicar en la comparació varia segons si cada mostra correspon a un individu diferent, o bé si un individu està representat varies vegades en cada mesura, és un paràmetre realment important. Aquest indicador és una de les principals causes d’estudis incorrectes utilitzant Bland-Altman, així que més val indicar-ne el seu valor correctament.
         </p>
+
         <h4 id="4">
             4. GRAU DE REPETICIÓ DE MOSTRES
         </h4>
@@ -87,6 +110,7 @@
         <p>
             És possible que hi hagi casos en que la repetició no sigui constant. Per aquests casos s’ha de calcular la mitjana de repetició i introduir aquest valor.
         </p>
+
         <h4 id="5">
             5. LES DADES PRESENTEN UNA DISTRIBUCIÓ NORMAL
         </h4>
@@ -96,6 +120,7 @@
         <p>
             Així doncs, en cas de que les dades presentin una distribució normal, s’indicaria aquest paràmetre com a “SI”. Així mateix, en cas que s’indiqui el contrari, s’aplicarà una transformació logarítmica als valors corresponents a la diferència (els valors resultants de restar els resultats obtinguts en cada mètode per a totes les mostres) amb la intenció de solucionar aquest problema. Tot i això, és possible que aquesta acció no sigui suficient i la comparació segueixi sent invàlida. Aquesta decisió s’ha de prendre en base a la gràfica que es retorna.
         </p>
+
         <h4 id="6">
             6. NIVELL DE CONFIANÇA PER ALS INTERVALS DE CONFIANÇA DEL BIAS I ELS LÍMITS DE CONCORDANÇA
         </h4>
@@ -105,6 +130,7 @@
         <p>
             Els valors que hi ha com a opció, i el seu significat, es poden trobar en el <a href="#2">punt 2</a>.
         </p>
+
         <h4 id="7">
             7. ARXIU CSV AMB LES DADES
         </h4>
@@ -116,15 +142,19 @@
         <p>
             En resum, ha de contenir únicament dues columnes, amb títol a la primera fila, sense valors buits en cap fila, i únicament elements numèrics amb un o cap punt, i les columnes han d’estar separades únicament per una coma “,”.
         </p>
-        <img src="img/csv_style.png" alt="" style="width: 120px;">
+        <img class="img_manual" src="img/csv_style.png" alt="" style="width: 120px;">
         <br/>
         <p>
             Un cop amb totes els paràmetres ben definits, es pot procedir a executar el procés de comparació.
         </p>
-        <img src="img/app_form.png" alt="" style="width: 500px;">
+
+        <h4 id="8">
+            8. EXEMPLE IL·LUSTRAT
+        </h4>
+        <img class="img_manual" src="img/app_form.png" alt="" style="width: 500px;">
         <p>
             <a href="exemple/data2.csv">Aquí</a> es pot descarregar un fitxer d’exemple, amb les dades sobre el quan s’han realitzat les imatges, per assegurar la correcte comprensió del funcionament de l’aplicació. Amb aquest fitxer i els paràmetres de la imatge anterior s'hauria d'obtenir el següent resultat:
         </p>
-        <img src="img/app_exemple.png" alt="" style="width: 800px;">
+        <img class="img_manual" src="img/app_exemple.png" alt="" style="width: 800px;">
     </body>
 </html>

@@ -470,29 +470,29 @@ function set_results(la, bias, ci_bias, la_values, ci_la_top, ci_la_bottom, len,
   </p>
 
   <p>
-    Els paràmetres utilitzats per aquest anàlisi comparatiu són els següents:
+    Els <strong>PARÀMETRES</strong> utilitzats per aquest anàlisi comparatiu són els següents:
   </p>
   <ul>
-    <li>Número de registres: ${len}</li>
-    <li>Independència entre dades: ${indep}</li>
+    <li>Número de registres: <strong>${len}</strong></li>
+    <li>Independència entre dades:<strong> ${indep}</strong></li>
     ${repeat_text}
-    <li>Distribució normal: ${normal}</li>
+    <li>Distribució normal: <strong>${normal}</strong></li>
     ${log_text}
-    <li>Nivell de confiança per als límits de concordança: ${cl_la}</li>
-    <li>Nivell de confiança per als intervals de confiança del bias i els límits de concordança: ${cl_ci}</li>
+    <li>Nivell de confiança per als límits de concordança: <strong>${cl_la}</strong></li>
+    <li>Nivell de confiança per als intervals de confiança del bias i els límits de concordança: <strong>${cl_ci}</strong></li>
   </ul>
 
   <p>
-    Els resultats obtinguts de la comparació són els següents:
+    Els <strong>RESULTATS</strong> obtinguts de la comparació són els següents:
   </p>
   <ul>
-    <li>Variància: ${Math.round(Math.pow(diff_sd, 2)*100)/100}</li>
-    <li>Desviació estàndard: ${Math.round(diff_sd*100)/100}</li>
-    <li>Bias: ${Math.round(bias*100)/100}</li>
-    <li>Intervals de confiança del bias: ${Math.round(ci_bias[0]*100)/100}, ${Math.round(ci_bias[1]*100)/100}</li>
-    <li>Límits de concordança: ${Math.round(la_values[0]*100)/100}, ${Math.round(la_values[1]*100)/100}</li>
-    <li>Intervals de confiança del límit de concordança major: ${Math.round(ci_la_top[0]*100)/100}, ${Math.round(ci_la_top[1]*100)/100}</li>
-    <li>Intervals de confiança del límit de concordança menor: ${Math.round(ci_la_bottom[0]*100)/100}, ${Math.round(ci_la_bottom[1]*100)/100}</li>
+    <li>Variància: <strong>${Math.round(Math.pow(diff_sd, 2)*100)/100}</strong></li>
+    <li>Desviació estàndard: <strong>${Math.round(diff_sd*100)/100}</strong></li>
+    <li>Bias: <strong>${Math.round(bias*100)/100}</strong></li>
+    <li>Intervals de confiança del bias: <strong>[${Math.round(ci_bias[0]*100)/100}, ${Math.round(ci_bias[1]*100)/100}]</strong></li>
+    <li>Límits de concordança: <strong>[${Math.round(la_values[0]*100)/100}, ${Math.round(la_values[1]*100)/100}]</strong></li>
+    <li>Intervals de confiança del límit de concordança major: <strong>[${Math.round(ci_la_top[0]*100)/100}, ${Math.round(ci_la_top[1]*100)/100}]</strong></li>
+    <li>Intervals de confiança del límit de concordança menor: <strong>[${Math.round(ci_la_bottom[0]*100)/100}, ${Math.round(ci_la_bottom[1]*100)/100}]</strong></li>
   </ul>
   </br>
 
