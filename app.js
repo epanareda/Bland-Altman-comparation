@@ -451,7 +451,7 @@ function set_results(la, bias, ci_bias, la_values, ci_la_top, ci_la_bottom, len,
   }
 
   if(indep == "NO"){
-    var repeat_text = `<li>Grau de dependència (repetició per mostres): ${repeat}</li>`;
+    var repeat_text = `<li>Grau de dependència (repetició per mostres): <strong>${repeat}</strong></li>`;
   }else{
     var repeat_text = ""
   }
