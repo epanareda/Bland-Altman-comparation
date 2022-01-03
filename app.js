@@ -558,7 +558,7 @@ function read_form(){
 
   if (csv.value == "" && !isNaN(la.value)) {
     window.alert(alert_text);
-    repeat.focus();
+    csv.focus();
     return false;
   }
 
