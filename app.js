@@ -442,7 +442,7 @@ function main(){
 function set_results(la, bias, ci_bias, la_values, ci_la_top, ci_la_bottom, len, diff_sd, indep, repeat, normal, cl_la, cl_ci){
   var cont = document.getElementById("result_cont");
 
-  if((la_values[0]-la_values[1]) >= Number(la)){
+  if((la_values[0]-la_values[1]) <= Number(la)){
     var big_small = "menor";
     var final_result = "FAVORABLE";
   }else{
