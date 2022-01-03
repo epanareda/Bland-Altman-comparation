@@ -540,7 +540,7 @@ function read_form(){
   var repeat = document.getElementById("repeat");
   var normal = document.getElementById("normal").value;
   var cl_ci = document.getElementById("CL-CI-LA").value;
-  var csv = document.getElementById("csv").files[0];
+  var csv = document.getElementById("csv");
 
   var alert_text = "Falta algun camp per omplir o hi ha algun camp incorrecte.";
 
@@ -556,7 +556,13 @@ function read_form(){
     return false;
   }
 
-  return [la.value, cl_la, indep, repeat.value, normal, cl_ci, csv];
+  if (csv.value == "" && !isNaN(la.value)) {
+    window.alert(alert_text);
+    repeat.focus();
+    return false;
+  }
+
+  return [la.value, cl_la, indep, repeat.value, normal, cl_ci, csv.files[0]];
 }
 
 function clean_form(){
